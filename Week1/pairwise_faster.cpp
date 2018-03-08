@@ -16,9 +16,13 @@ long long MaxPairWiseProductFast(const vector<long long>& numbers)
             index1=i;
     }
     long long index2=1;
+    if(index1==1)
+        index2=2;
+    else
+        index2=1;
     for(int i=2; i<n; ++i)
     {
-        if(numbers[i]>numbers[index2])
+        if(numbers[i]>numbers[index2] && index1!=i)
             index2=i;
     }
     return numbers[index1]*numbers[index2];    
