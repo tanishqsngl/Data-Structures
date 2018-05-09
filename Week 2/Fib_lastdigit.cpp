@@ -3,12 +3,12 @@
 
 int fibonacci_fast(int n)
 {
-    int number[200];
+    unsigned long long int number[1000000];
     number[0]=0;
     number[1]=1;
     for(int i=2;i<=n;i++)
     {
-        number[i]=number[i-1]+number[i-2];
+        number[i]=(number[i-1]+number[i-2])%10;
     }
     return number[n];
 }
