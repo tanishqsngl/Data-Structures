@@ -4,38 +4,33 @@
 
 using std::vector;
 
-int binary_search(vector<double> a, int x, int left, int right) {
-  int middle = left + (right-left)/2;
+long double binary_search(vector<long double> a, long double x, long double left, long double right) {
 
-  if(right<left)
-    return -1;
+  while(left<=right){
+    int middle = left + (right-left)/2;
 
-  if(a[middle]==x)
-    return middle;
+    if(a[middle]==x)
+      return middle;
 
-  if(a[middle]<x)
-    return binary_search(a, x, middle+1, right);
+    else if(a[middle]<x)
+      left = middle + 1;
 
-  return binary_search(a, x, left, middle-1);
-}
-
-int linear_search(vector<int> a, int x) {
-  for (size_t i = 0; i < a.size(); ++i) {
-    if (a[i] == x) return i;
+    else
+     right = middle-1;
   }
   return -1;
 }
 
 int main() {
-  int n;
+  long double n;
   std::cin >> n;
-  vector<double> a(n);
+  vector<long double> a(n);
   for (size_t i = 0; i < a.size(); i++) {
     std::cin >> a[i];
   }
-  int m;
+  long double m;
   std::cin >> m;
-  vector<int> b(m);
+  vector<long double> b(m);
   for (int i = 0; i < m; ++i) {
     std::cin >> b[i];
   }
