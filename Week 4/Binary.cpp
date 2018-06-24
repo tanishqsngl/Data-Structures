@@ -4,19 +4,19 @@
 
 using std::vector;
 
-int binary_search(vector<int> a, int x, int left, int right) {
+int binary_search(vector<double> a, int x, int left, int right) {
   int middle = left + (right-left)/2;
 
-  if(right<=left)
+  if(right<left)
     return -1;
 
   if(a[middle]==x)
     return middle;
 
   if(a[middle]<x)
-    return binary_search(a, x, middle, right);
+    return binary_search(a, x, middle+1, right);
 
-  return binary_search(a, x, left, middle);
+  return binary_search(a, x, left, middle-1);
 }
 
 int linear_search(vector<int> a, int x) {
@@ -29,7 +29,7 @@ int linear_search(vector<int> a, int x) {
 int main() {
   int n;
   std::cin >> n;
-  vector<int> a(n);
+  vector<double> a(n);
   for (size_t i = 0; i < a.size(); i++) {
     std::cin >> a[i];
   }
@@ -40,7 +40,6 @@ int main() {
     std::cin >> b[i];
   }
   for (int i = 0; i < m; ++i) {
-    //replace with the call to binary_search when implemented
     std::cout << binary_search(a, b[i], 0, a.size()) << ' ';
   }
   std::cout<<std::endl;
