@@ -14,9 +14,9 @@ int binary_search(vector<int> a, int x, int left, int right) {
     return middle;
 
   if(a[middle]<x)
-    return binary_search(a, x, middle+1, right);
+    return binary_search(a, x, middle, right);
 
-  return binary_search(a, x, left, middle-1);
+  return binary_search(a, x, left, middle);
 }
 
 int linear_search(vector<int> a, int x) {
