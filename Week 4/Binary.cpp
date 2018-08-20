@@ -4,21 +4,23 @@
 
 using std::vector;
 
-long long int binary_search(vector<long long int> a, long long int x, long long int left, long long int right) {
+long long int binarySearch(vector<long long int> &a, long long int l, long long int r, long long int x)
+{
+    while (l <= r)
+    {
+        long long int m = l + (r-l)/2;
 
-  while (left<=right){
-    long long int middle = left + (right-left)/2;
+        if (a[m] == x)
+            return m;
+ 
+        if (a[m] < x)
+            l = m + 1;
+ 
+        else
+            r = m - 1;
+    }
 
-    if(a[middle]==x)
-      return middle;
-
-    if(a[middle]<x)
-      left = middle + 1;
-
-    else
-      right = middle - 1;
-  }
-  return -1;
+    return -1;
 }
 
 int main() {
@@ -34,11 +36,9 @@ int main() {
   for (long long int i = 0; i < m; ++i) {
     std::cin >> b[i];
   }
-  if(m&&n==0)
-    std::cout<<-1;
 
   for (long long int i = 0; i < m; ++i) {
-    std::cout << binary_search(a, b[i], 0, a.size()) << ' ';
+    std::cout << binarySearch(a, 0, a.size(), b[i]) << ' ';
   }
   std::cout<<std::endl;
 }
