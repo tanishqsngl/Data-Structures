@@ -34,6 +34,9 @@ int main() {
   for (long long int i = 0; i < m; ++i) {
     std::cin >> b[i];
   }
+  if(m&&n==0)
+    std::cout<<-1;
+
   for (long long int i = 0; i < m; ++i) {
     std::cout << binary_search(a, b[i], 0, a.size()) << ' ';
   }
